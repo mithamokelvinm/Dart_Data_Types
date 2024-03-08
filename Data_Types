@@ -1,60 +1,26 @@
-import java.util.Scanner;
+// This program demonstrates basic data types in Dart
 
-public class NumberToWords {
+void main() {
+  // Integer (int) to store whole numbers
+  int age = 30;
+  print("My age is $age"); // String interpolation for clear output
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+  // Double (double) to store numbers with decimals
+  double pi = 3.14159;
+  print("The value of pi is $pi");
 
-        System.out.print("Enter a number (between 1 and 9999): ");
-        int number = scanner.nextInt();
+  // String (String) to store text
+  String name = "Alice";
+  print("My name is $name");
 
-        // Input validation
-        if (number < 1 || number > 9999) {
-            System.out.println("Invalid input. Please enter a number between 1 and 9999.");
-            return;
-        }
+  // List (List) to store collections of items (ordered)
+  List<String> colors = ["red", "green", "blue"];
+  print("My favorite colors are: $colors");
 
-        String numberInWords = convertNumber(number);
-        System.out.println(numberInWords);
-    }
-
-    public static String convertNumber(int number) {
-        // Arrays to store word representations of digits and tens
-        String[] ones = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-                "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
-        String[] tens = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
-
-        // Separating digits by place value
-        int thousand = number / 1000;
-        int hundred = (number % 1000) / 100;
-        int tensDigit = (number % 100) / 10;
-        int onesDigit = number % 10;
-
-        String result = "";
-
-        // Handling thousands place
-        if (thousand > 0) {
-            result += convertNumber(thousand) + " Thousand ";
-        }
-
-        // Handling hundreds place
-        if (hundred > 0) {
-            result += ones[hundred] + " Hundred ";
-        }
-
-        // Handling tens and ones place
-        if (tensDigit > 0) {
-            if (tensDigit == 1 && onesDigit > 0) {
-                result += ones[tensDigit + 9]; // Special case for teens (11-19)
-            } else {
-                result += tens[tensDigit] + " ";
-            }
-        }
-
-        if (onesDigit > 0 && (tensDigit != 1 || tensDigit == 0)) {
-            result += ones[onesDigit];
-        }
-
-        return result.trim();
-    }
+  // Map (Map) to store key-value pairs
+  Map<String, String> fruits = {
+    "apple": "red",
+    "banana": "yellow",
+  };
+  print("The color of an apple is ${fruits["apple"]}"); // Accessing value by key
 }
